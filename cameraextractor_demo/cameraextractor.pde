@@ -153,9 +153,9 @@ class VideoExtractor extends PApplet
       //end of analysis, if we found something...
       if ( this.centerOfInterestingPointsNormalizedInSketch != null)
       {
-        //here we interact with the main sketch
-        //updateRotationsVelocity((int) centerOfInterestingPointsNormalizedInSketch.x, (int) centerOfInterestingPointsNormalizedInSketch.y);
-        //updateRotationsVelocity((int) centerOfInterestingPointsNormalizedInSketch.x, (int) centerOfInterestingPointsNormalizedInSketch.y);
+        //here we can directly interact with the main sketch
+        //...
+        centerOfMassFromVideoExtractor = this.centerOfInterestingPointsNormalizedInSketch.copy();
       }
     }
   }
