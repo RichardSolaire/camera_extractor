@@ -3,13 +3,13 @@
 # StickyGUI
 
 
-![img](https://github.com/sitodav/stickyGUI/blob/develop/img.png?raw=true "Title")
+![img](https://github.com/sitodav/stickyGUI/blob/develop/0.png?raw=true "Title")
 
 
 
 ## Features
 
-- A little pluggable sketch to help user interact with Processing sketches: it allows to interact visually with the mouse and to plug the events to the keyPressed() handler.
+- A little pluggable sketch to allow user to interact with a projected sketch, using a laser (or a hand, or whatever object you prefer)
 - It supports interaction with single chars events (like a,b,c,1,2...) and special KeyCode events (like ENTER).
 - Sometimes it has some problems with the resizing. It will be fixed in the next release.
 
