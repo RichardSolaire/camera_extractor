@@ -80,7 +80,7 @@ void keyPressed()
 
 ### Links
 
-`<my generative coding>` : <https://stickyb1t.start.page/>
+`<my generative coding>` : <https://linktr.ee/stickyb1t>
 
 
 
