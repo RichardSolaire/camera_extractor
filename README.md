@@ -7,14 +7,15 @@
 
 
 ## Features & limitations (for the moment)
-- A little pluggable sketch to allow user to interact with a projected sketch, using a laser (or a hand, or whatever object you prefer)
+- A little pluggable class to allow user to interact with a projected sketch, using a laser (or a hand, or whatever object you prefer)
 - You register what kind of point you want to track using the RGB space
 - There are some glitches due to illumination that I plan to fix (making it more robust)
-- The main sketch should only work with white drawing (stroke and fill)
-
+- The main sketch should only work with white drawing (stroke and fill) for now.
+- The detection is done using a simple absolute difference between the 3 channels (rgb). As soon as I have time I will try to use something more comples and robus.
+- THIS IS AN ALPHA VERSION, AND IT'S SENSIBLE TO ILLUMINATION VARIATIONS. SO YOU WILL PROBABLY HAVE TO PLAY WITH THE PARAMETERS.
 
 ## What you need
-- A cheap camera (the better the model, the better the results), mounted on the projector (or in a place where can record the projection)
+- A cheap camera (better model, better results), mounted on the projector (or in a place where it can record the projection)
 - A projector
 - At least one monitor (to control the demo) separated from the projector (the main sketch should run in fullscreen on the projector)
 
@@ -23,9 +24,9 @@ You have a main sketch. And you have the videoextractor class.
 In your main sketch you have to draw ONLY with the color white.
 The main sketch runs on the projector, so it's projected on the wall.
 The analysis (and the user interaction for ROI and RGB registration) happens on a second sketch that runs in another thread on secondary papplet.
-The camera records what is projected, and analyze only what happens in the ROI (the ROI is selected from the user)
+The camera records what is projected, and analyze only what happens in the ROI (the ROI is selected from the user).
 The videoextractor eliminate the white pixels from the ROI (these should be from the main sketch projection), and detects the most similars to the RGB values selected from the user.
-The center of mass of this point is returned, normalized in the main sketch size/coordinas
+The center of mass of this point is returned, normalized in the main sketch size/coordinates.
 The main sketch can use the center of mass from the videoextractor papplet.
  
 
@@ -34,9 +35,8 @@ The main sketch can use the center of mass from the videoextractor papplet.
 ## Use
 
 In the setup function, the second parameter to fullScreen() is the index of the projector (to get it right you have
-to try it out, on my system sometimes it's 2, others it's 1
-
- ####Java　
+to try it out, on my system sometimes it's 2, others it's 1)
+ 
 ```java
 
 PVector centerOfMassFromVideoExtractor; //this is set from the videoextractor
@@ -55,9 +55,9 @@ void setup()
 ```
 
 Note that in the main sketch , for the demo, I draw a white rectangle wrapping the main sketch.
-This is used to understand, on the secondary/control sketch, what is the sketch inside of what the camera is recording.
+This is used to understand, on the secondary/control sketch, where is the sketch inside of what the camera is recording/displayed on the secondary sketch.
 
- ####Java　
+ 
 ```java
 void draw()
 {
@@ -109,8 +109,9 @@ Press 2 on the secondary sketch to start the analysis/interaction
  
 
 ### Links
+If you liked it, follow me on my socials:
 
-`<my generative coding>` : <https://linktr.ee/stickyb1t>
+<https://linktr.ee/stickyb1t>
 
 
 
