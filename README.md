@@ -3,7 +3,7 @@
 # StickyGUI
 
 
-![img](https://github.com/sitodav/stickyGUI/blob/develop/images/0.png?raw=true "Title")
+![img](https://github.com/sitodav/camera_extractor/blob/develop/images/0.png?raw=true "Title")
 
 
 
