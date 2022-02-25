@@ -78,7 +78,7 @@ class VideoExtractor extends PApplet
   void draw()
   {
     strokeWeight(1);
-    if (SKETCH_MODE == 0)
+    if (SKETCH_MODE == 0 || SKETCH_MODE == 1)
     {
       if (cam.available() == true) {
         cam.read();
@@ -88,7 +88,7 @@ class VideoExtractor extends PApplet
       //tCam.resize(1280, 720);
       image(tCam, 0, 0);
 
-      if (null != firstClickMousePosition)
+      if (null != firstClickMousePosition && SKETCH_MODE == 0)
       {
         rectMode(CORNER);
         noFill();
