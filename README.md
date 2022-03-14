@@ -25,9 +25,10 @@ In your main sketch you have to draw ONLY with the color white.
 The main sketch runs on the projector, so it's projected on the wall.
 The analysis (and the user interaction for ROI and RGB registration) happens on a second sketch that runs in another thread on secondary papplet.
 The camera records what is projected, and analyze only what happens in the ROI (the ROI is selected from the user).
-The videoextractor eliminate the white pixels from the ROI (these should be from the main sketch projection), and detects the most similars to the RGB values selected from the user.
-The center of mass of this point is returned, normalized in the main sketch size/coordinates.
-The main sketch can use the center of mass from the videoextractor papplet.
+When the sketch starts, you register the part of the camera where the main sketch happens (mode 0) and the
+template you want to track (mode 1)
+The processor applies several analysis step, and returns the best match for the registered ROI template.
+
  
 
  
@@ -38,20 +39,25 @@ In the setup function, the second parameter to fullScreen() is the index of the 
 to try it out, on my system sometimes it's 2, others it's 1)
  
 ```java
-
-PVector centerOfMassFromVideoExtractor; //this is set from the videoextractor
-
-
 //MAIN SKETCH
+
+import processing.video.*;
+
+VideoExtractor videoExtractor; 
+int NUM_COLS = 40;
+int NUM_ROWS = 40; 
+
 void setup()
 {
 
-  fullScreen( P3D,2);  
+ 
+  fullScreen( P3D,1); 
   background(0);
-  
-  videoExtractor = new VideoExtractor(1650, 450, this); 
+   
+  videoExtractor = new VideoExtractor(1650, 450, this);
   videoExtractor.startSketch();
 }
+
 ```
 
 Note that in the main sketch , for the demo, I draw a white rectangle wrapping the main sketch.
@@ -59,33 +65,32 @@ This is used to understand, on the secondary/control sketch, where is the sketch
 
  
 ```java
+PVector displayHere; //this is set by the VideoExtractor class
+
 void draw()
 {
+  //this is the white rectangle wrapping the primary sketch
   background(0);
-  
-  //this white rectangle wrapping the sketch is used to control 
-  //where to draw the ROI
   noFill();
   stroke(255,210);
   rectMode(CORNER);
   rect(0,0,displayWidth,displayHeight);
   
-  
-  if(null != centerOfMassFromVideoExtractor)
+  PVector t;
+  if(null !=(t = displayHere))
   {
      rectMode(CENTER);
-     noFill();
-     stroke(255,255);
-     rect(centerOfMassFromVideoExtractor.x,centerOfMassFromVideoExtractor.y,50,50);
+     fill(255,10);
+     rect(displayHere.x,displayHere.y,200,200);
   }
- 
+  
 }
 ```
 
 When you start the sketch, on the second window (not the one of the main sketch)
 you have 3 working modes (the starting one is 0)
-0: Register ROI 
-1: Register what RGB color detect 
+0: Register ROI for the main sketch
+1: Register ROI for the region to detect (using cross correlation)
 2: Start the analysis and interaction between the videoextractor and the main sketch
 
 

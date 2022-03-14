@@ -187,6 +187,7 @@ class VideoExtractor extends PApplet
         //here we interact with the main sketch
         //updateRotationsVelocity((int) centerOfFoundTemplateNormalizedInSketch.x, (int) centerOfFoundTemplateNormalizedInSketch.y);
         //updateRotationsVelocity((int) centerOfFoundTemplateNormalizedInSketch.x, (int) centerOfFoundTemplateNormalizedInSketch.y);
+        displayHere = this.centerOfFoundTemplateNormalizedInSketch;
       }
     }
   }
