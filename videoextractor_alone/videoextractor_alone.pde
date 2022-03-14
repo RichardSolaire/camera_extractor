@@ -32,7 +32,7 @@ void draw()
   {
      rectMode(CENTER);
      fill(255,10);
-     rect(displayHere.x,displayHere.y,200,200);
+     rect(t.x,t.y,200,200);
   }
   
 }
